@@ -1,28 +1,34 @@
-import { NotImplementedError } from '../extensions/index.js';
+import { NotImplementedError } from "../extensions/index.js";
 
 /**
  * Implement chainMaker object according to task description
- * 
+ *
  */
 export default {
+  chainArr: [],
   getLength() {
-    throw new NotImplementedError('Not implemented');
+    return this.chainArr.length;
     // remove line with error and write your code here
   },
-  addLink(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  addLink(value) {
+    value !== undefined ? this.chainArr.push(`( ${String(value)} )`) : this.chainArr.push("( )");
+    return this;
   },
-  removeLink(/* position */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  removeLink(position) {
+    if (position < 1 || this.getLength() < position || !Number.isInteger(position)) {
+      this.chainArr = [];
+      throw Error();
+    }
+    this.chainArr.splice(position - 1, 1);
+    return this;
   },
   reverseChain() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    this.chainArr.reverse();
+    return this;
   },
   finishChain() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+    let res = this.chainArr.join("~~");
+    this.chainArr = [];
+    return res;
+  },
 };
