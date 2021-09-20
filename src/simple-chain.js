@@ -17,7 +17,7 @@ export default {
   removeLink(position) {
     if (position < 1 || this.getLength() < position || !Number.isInteger(position)) {
       this.chainArr = [];
-      throw Error();
+      throw new Error("You can't remove incorrect link!");
     }
     this.chainArr.splice(position - 1, 1);
     return this;

@@ -13,8 +13,10 @@ import { NotImplementedError } from "../extensions/index.js";
  */
 export default function getSeason(date) {
   if (!date) return "Unable to determine the time of year!";
-  if (Object.prototype.toString.call(date) !== "[object Date]") {
-    return "Invalid date!";
+  try {
+    date.toTimeString();
+  } catch (e) {
+    throw new Error("Invalid date!");
   }
 
   let month = date !== null ? date.getMonth() : undefined;
