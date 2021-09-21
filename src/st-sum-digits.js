@@ -1,4 +1,4 @@
-import { NotImplementedError } from '../extensions/index.js';
+import { NotImplementedError } from "../extensions/index.js";
 
 /**
  * Given a number, replace this number with
@@ -12,7 +12,8 @@ import { NotImplementedError } from '../extensions/index.js';
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-export default function getSumOfDigits(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function getSumOfDigits(m) {
+  let str = m.toString().split("");
+  let res = str.reduce((acc, n) => acc + Number(n), 0);
+  return res.toString().length > 1 ? getSumOfDigits(res) : res;
 }
