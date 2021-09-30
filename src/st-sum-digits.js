@@ -13,7 +13,7 @@ import { NotImplementedError } from "../extensions/index.js";
  *
  */
 export default function getSumOfDigits(m) {
-  let str = m.toString().split("");
+let str = m.toString().split("");
   let res = str.reduce((acc, n) => acc + Number(n), 0);
   return res.toString().length > 1 ? getSumOfDigits(res) : res;
 }
